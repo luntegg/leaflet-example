@@ -1,0 +1,39 @@
+{
+    "name": "rtlservice-frontend-task",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.html",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "luntegg",
+    "license": "ISC",
+    "dependencies": {
+        "angular": "^1.6.4",
+        "angular-leaflet-directive": "^0.10.0",
+        "angular-route": "^1.6.4",
+        "angular-ui-bootstrap": "^2.5.0",
+        "angular-websocket": "^2.0.1",
+        "bootstrap": "^3.3.7",
+        "del": "^2.2.2",
+        "font-awesome": "^4.7.0",
+        "gulp": "^3.9.1",
+        "gulp-clean-css": "^3.0.4",
+        "gulp-concat": "^2.6.1",
+        "gulp-sourcemaps": "^2.6.0",
+        "gulp-uglify": "^2.1.2",
+        "leaflet": "^1.2.0",
+        "leaflet.markercluster": "^1.2.0",
+        "prunecluster": "^2.1.0"
+    },
+    "devDependencies": {
+        "bufferutil": "^2.0.1",
+        "connect": "^3.5.1",
+        "serve-static": "^1.11.2",
+        "utf-8-validate": "^3.0.1",
+        "ws": "^2.0.3",
+        "gulp-angular-templatecache": "^2.0.0",
+        "gulp-file-include": "^1.1.0",
+        "gulp-sass": "^3.1.0"
+    }
+}

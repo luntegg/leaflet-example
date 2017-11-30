@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru" ng-app="mapApp">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <title>Map</title>
+        <link rel="stylesheet" href="./assets/css/vendor.min.css">
+        <link rel="stylesheet" href="./assets/css/system.min.css">
+    </head>
+    <body>
+        <div class="main-map" ng-controller="MainMapCtrl">
+            <div class="side-menu ng-cloak" ng-if="collection.length">
+                <div class="h2 text-center">Устройства</div>
+                <hr>
+                <input type="text" placeholder="Поиск по MAC" class="search"
+                       ng-keypress="settings.pagination.currentPage = 0"
+                       ng-model="settings.search" />
+                <div class="devices">
+                    <div class="device" ng-click="moveMap(marker)" ng-repeat="marker in collection
+                    | filter: { mac: settings.search }
+                    | startFrom:settings.pagination.currentPage * settings.pagination.pageSize
+                    | limitTo:settings.pagination.pageSize">
+                        <i ng-class="{ 'device__is-online': marker.status.isOnline, 'device__is-offline': !marker.status.isOnline }"></i>
+                        {{ marker.mac }}
+                        <div class="text-grey text-xs">LAT: {{ marker.location.lat|number:6 }}, LON: {{ marker.location.lon|number:6 }}</div>
+                    </div>
+                </div>
+                <div class="pagination" ng-if="numberOfPages() > 2">
+                    <button class="prev" ng-disabled="settings.pagination.currentPage == 0" ng-click="settings.pagination.currentPage = settings.pagination.currentPage - 1">
+                        <-
+                    </button>
+                    {{ settings.pagination.currentPage + 1 }}/{{ numberOfPages() }}
+                    <button class="next" ng-disabled="isNextPageAvailable()" ng-click="settings.pagination.currentPage = settings.pagination.currentPage + 1">
+                        ->
+                    </button>
+                </div>
+            </div>
+            <div class="map">
+                <leaflet lf-center="center" height="650px" width="100%" layers="layers"></leaflet>
+            </div>
+        </div>
+
+        <script src="./assets/js/vendor.min.js"></script>
+        <script src="./assets/js/templates.js"></script>
+        <script src="./assets/js/system.min.js"></script>
+    </body>
+</html>
